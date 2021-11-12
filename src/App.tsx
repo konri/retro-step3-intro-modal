@@ -9,6 +9,8 @@ import AghLogo from './assets/agh-logo.png';
 import QualtricsLogo from './assets/Qualtrics-logo.svg';
 import styled from 'styled-components';
 import { Workspace } from './app/components/Workspace/Workspace';
+import { IntroModal } from './app/components/IntroModal/IntroModal';
+
 
 const Header = styled.div`
   display: flex;
@@ -29,6 +31,17 @@ const AppName = styled.div`
   color: #282c34;
 `
 
+
+const IntroModalPage = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(109, 121, 130, 0.6);
+  justify-content: center;
+  align-items: center;
+`
+
+
 function App() {
   return (
     <div>
@@ -43,8 +56,13 @@ function App() {
     <Router>
       <div>
         <Switch>
-          <Route path="/">
+          <Route path="/retro">
             <Workspace />
+          </Route>
+          <Route path="/">
+            <IntroModalPage>
+              <IntroModal />
+            </IntroModalPage>
           </Route>
         </Switch>
       </div>

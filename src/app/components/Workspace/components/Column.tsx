@@ -7,6 +7,7 @@ import { CommentTextarea } from './CommentTextarea';
 import { Comment } from './Comment';
 import { ColumnTitle } from './ColumnTitle';
 import { addComment, RetroComment, setColumnColor, setColumnTitle } from '../../../store/retroWorkspace.slice';
+import { RootState } from '../../../store/store';
 
 const ColumnHeaderContainer = styled.div`
   display: flex;
@@ -24,7 +25,7 @@ export interface RetroColumnProps {
 }
 
 export function Column({ id, title, comments, color }: RetroColumnProps) {
-  const name = 'user'
+  const name = useSelector((state: RootState) => state.user.name);
 
   const dispatch = useDispatch();
   return (
