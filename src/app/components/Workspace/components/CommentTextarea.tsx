@@ -1,4 +1,4 @@
-import React, { KeyboardEventHandler, useCallback, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
 
 const CommentContainer = styled.div`
@@ -29,11 +29,11 @@ const CommentTextArea = styled.textarea`
   margin: 0;
 `;
 
-export interface RetroCommentTextareaProps {
+export interface CommentTextareaProps {
   onCommentSave: (comment: string) => void;
 }
 
-export function CommentTextarea({ onCommentSave }: RetroCommentTextareaProps) {
+export function CommentTextarea({ onCommentSave }: CommentTextareaProps) {
   const [text, setText] = useState('');
 
   const handleKeyPress = useCallback((event: any) => {

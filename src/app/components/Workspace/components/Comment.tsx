@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export interface RetroCommentProps {
+export interface CommentProps {
+  userName: string;
   color: string;
   content: string;
 }
@@ -39,15 +40,13 @@ const CommentFooter = styled.div`
   font-weight: bold;
 `
 
-export function Comment({  color, content }: RetroCommentProps) {
+export function Comment({ userName, color, content }: CommentProps) {
   return (
     <CommentContainer color={color}>
       <CommentContent>
         {content}
       </CommentContent>
-      <CommentFooter>
-        user
-      </CommentFooter>
+      <CommentFooter>{userName}</CommentFooter>
     </CommentContainer>
   );
 }

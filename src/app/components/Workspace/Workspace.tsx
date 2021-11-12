@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Column } from './components/Column';
+import { AddColumn } from './components/AddColumn';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
+import { addNewColumn, RetroColumn } from '../../store/retroWorkspace.slice';
 
 const WorkspaceContainer = styled.div`
   display: flex;
@@ -10,23 +14,21 @@ const WorkspaceContainer = styled.div`
   min-height: 100vh;
   padding: 40px 20px;
 `;
+
 const Content = styled.div`
   display: flex;
   flex-direction: row;
 `;
 
 
-const mockComments = [
-  'Great help and engagement from X team in the last week.',
-  'Development of feature Y was great',
-  'Party from last week was awesome!'
-];
-
 export function Workspace() {
+  const columns = useSelector((state: RootState) => state.retroWorkspace);
+  const dispatch = useDispatch();
   return (
     <WorkspaceContainer>
       <Content>
-        <Column title='PLUS' id={1} comments={mockComments} color={'#e5f6d2'}/>
+        {columns.map((column: RetroColumn) => <Column title={column.title} id={column.id} comments={column.comments} color={column.color}/>)}
+        <AddColumn onClick={() => dispatch(addNewColumn())}/>
       </Content>
     </WorkspaceContainer>
   );

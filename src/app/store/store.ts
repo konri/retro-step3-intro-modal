@@ -1,9 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
+import retroWorkspaceReducer, { RetroWorkspaceSliceState } from './retroWorkspace.slice';
 
-export interface RootStore {
+export interface RootState {
+  retroWorkspace: RetroWorkspaceSliceState;
 }
 
-export default configureStore<RootStore>({
+export default configureStore<RootState>({
   reducer: {
+    retroWorkspace: retroWorkspaceReducer,
   },
 });
